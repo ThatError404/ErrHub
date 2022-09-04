@@ -8,6 +8,16 @@ export default (req, res) => {
         res.send(JSON.stringify({
             error: "No ID was provided."
         }, null, 4))
+    } else if (!fid) {
+        res.setHeader("Content-Type", 'application/json');
+        res.send(JSON.stringify({
+            error: "No Friend ID was provided."
+        }, null, 4))
+    } else if (!id && !fid) {
+        res.setHeader("Content-Type", 'application/json');
+        res.send(JSON.stringify({
+            error: "No ID and Friend ID were provided."
+        }, null, 4))
     } else {
         fetch(`https://friends.roblox.com/v1/users/${id}/friends/statuses?userIds=${fid}`)
             .then((r) => r.json())
