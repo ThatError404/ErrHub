@@ -1,5 +1,6 @@
+const fetch = require('node-fetch');
+
 export default (req, res) => {
-    const fetch = require('node-fetch');
     let type = req.query.type;
     if (!type) {
         res.setHeader("Content-Type", 'application/json');
