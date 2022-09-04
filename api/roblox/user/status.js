@@ -39,7 +39,7 @@ export default (req, res) => {
                     .then(text => {
                         res.setHeader("Content-Type", 'application/json');
                         res.send(JSON.stringify(text, null, 4))
-                    })
-            })
+                })
+        })
     }
 }
