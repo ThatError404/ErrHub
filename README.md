@@ -18,13 +18,19 @@ const fetch = require('node-fetch');
 
 const url = 'https://errhub.dev/api/roblox/user/status?type=id&id=3588216323';
 
-fetch(url).then(res => res.json())
-let data = res.json()
-console.log("User Is: " + data.isOnline)
+fetch(url)
+    .then(res => res.json())
+    .then(json => {
+        if (json.IsOnline === false) {
+            console.log('User is offline');
+        } else {
+            console.log('User is online');
+        }
+    });
 ```
 **Output:**
 ```
 User Is: Offline
 ```
 
-**[Test it]()**
+**[Test it](https://replit.com/@bradygustafson4/ErrHub-API-or-User-Info?v=1#index.js)**
