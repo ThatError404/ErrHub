@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./images/error.jpg">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+
+  <!-- Embed -->
+  <meta name="og:title" content="Err Hub">
+  <meta name="og:image" content="./images/error.jpg">
+  <meta name="theme-color" content="#f56642" />
+  <title>ErrHub</title>
+
+  <style>
+    .cardlist {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+        flex-wrap: wrap;
+        padding-top: 1em;
+        animation: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) 0s 1 slideInFromBottom;
+    }
+
+  
+    @keyframes slideInFromBottom {
+        0% {
+            transform: translateY(50%);
+            filter: opacity(0);
+        }
+
+        100% {
+            transform: translateY(0);
+            filter: opacity(1);
+        }
+    }
+
+    @keyframes cardDelete {
+        0% {
+            transform: translateY(0);
+            filter: opacity(1);
+        }
+
+        50% {
+            transform: translateY(100%);
+            filter: opacity(0);
+            width: 200px;
+        }
+
+        100% {
+            transform: translateY(100%);
+            filter: opacity(0);
+            width: 0px;
+        }
+    }
+
+    @keyframes rowDelete {
+        0% {
+            transform: translateX(0);
+            filter: opacity(1);
+        }
+
+        50% {
+            transform: translateX(-100%);
+            filter: opacity(0);
+        }
+
+        100% {
+            transform: translateX(-100%);
+            filter: opacity(0);
+        }
+    }
+
+    @keyframes cardAdd {
+        0% {
+            transform: translateY(100%);
+            filter: opacity(0);
+            width: 0px;
+        }
+
+        50% {
+            transform: translateY(100%);
+            filter: opacity(0);
+            width: 200px;
+        }
+
+        100% {
+            transform: translateY(0);
+            filter: opacity(1);
+        }
+    }
+
+    @keyframes shakeDeny {
+        0% {
+            transform: 0;
+            filter: brightness(1);
+        }
+
+        25% {
+            transform: translateX(-10px);
+            filter: brightness(0.8);
+        }
+
+        75% {
+            transform: translateX(10px);
+            filter: brightness(0.8);
+        }
+
+        100% {
+            filter: brightness(1);
+            transform: 0;
+        }
+    }
+
+    .card {
+        width: 200px;
+        position: relative;
+        flex-shrink: 0;
+        height: 120px;
+        border-radius: 0.25em;
+        z-index: 1;
+        user-select: none;
+        transition: transform 0.2s, box-shadow 0.2s;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        background-position: 100% 0% !important;
+        overflow: hidden;
+        background-color: white;
+    }
+
+    .card:not([id]):not(.card-empty):not(.my-card) {
+        text-shadow: 2px 2px 7px #121212;
+        background: linear-gradient(130deg, rgb(149, 0, 255) 0%, rgb(199, 9, 82) 100%);
+        box-shadow: 4px 5px #0f0f0f;
+        flex-wrap: wrap;
+        padding-bottom: 3.5em;
+    }
+
+    .card::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    .card:hover:not(.card-empty):not(.card-disabled) {
+        transform: scale(1.1);
+        z-index: 2;
+        box-shadow: 0 0 5px black;
+    }
+
+    .card a {
+        position: absolute;
+        height: 100%;
+        width: calc(100% - 10px);
+        color: inherit;
+        top: 0;
+        text-decoration: none;
+        overflow: hidden;
+        padding: 5px;
+        transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    .card:not(.card-empty):not(.card-disabled) a:active {
+        transform: scale(0.9);
+        z-index: 2;
+    }
+
+    .card a * {
+        margin-top: 15px;
+    }
+
+    .card:hover:not(.card-empty) a h1 {
+        padding-top: 0px;
+    }
+
+    .card p {
+        font-size: 105%;
+        margin-top: -3px;
+    }
+
+    .card-empty {
+        border: 3px dashed white;
+        width: 194px;
+        background-color: transparent;
+        height: 94px;
+    }
+
+    .card-empty:before {
+        background: none;
+    }
+
+    /* my links */
+    .my-card {
+        background-color: var(--blue);
+    }
+
+    #add-link {
+        transition: filter 0.2s;
+        cursor: pointer;
+    }
+
+    #add-link:hover {
+        filter: brightness(0.8)
+    }
+</style>
+</head>
+
+<body>
+    <nav>
+        <ul class="navigation-bar">
+          <li><a href="./index.html#about">About</a></li>
+          <li><a href="./api.html">Current APIs</a></li>
+          <li><a href="./index.html#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    <header>
+        <div>
+            <h1>PooPoo API</h1>
+            <p>A very simple api that you might use</p>
+        </div>
+        <!--<div class="gradient-effect"></div>-->
+    </header>
+
+    <main>
+        <section id="current-apis">
+            <h2 style="background-image: linear-gradient(90deg, rgba(56,74,255,1) 0%, rgba(196,0,255,1) 100%)">Current APIs</h2>
+            <div class="cardlist" id="workingOn">
+              <article class="card" time="0" title="An API to get a users status on Roblox">
+                    <a>
+                        <h3>Roblox User Status</h3>
+                        <p>/roblox/user/status?type={type}&{type}={ID}</p>
+                    </a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div>
+            <h2>ErrHub</h2>
+            <p class="footer-credits">Developed by Error 404#0002 (2022)</p>
+        </div>
+    </footer>
+
+    <style>
+        .qc-cmp-showing {
+            visibility: hidden !important;
+        }
+
+        body.didomi-popup-open {
+            overflow: auto !important;
+        }
+
+        #didomi-host {
+            visibility: hidden !important;
+        }
+    </style>
+</body>
+</html>
