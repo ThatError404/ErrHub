@@ -3,12 +3,12 @@ const fetch = require('node-fetch');
 export default (req, res) => {
     const { id } = req.query;
     const { fid } = req.query;
-    if (!id) {
+    if (!id && fid) {
         res.setHeader("Content-Type", 'application/json');
         res.send(JSON.stringify({
             error: "No ID was provided."
         }, null, 4))
-    } else if (!fid) {
+    } else if (!fid && id) {
         res.setHeader("Content-Type", 'application/json');
         res.send(JSON.stringify({
             error: "No Friend ID was provided."
