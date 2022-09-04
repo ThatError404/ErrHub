@@ -1,1 +1,1 @@
-<div align="center"><image src="./images/vercel.svg" width="400" height="100"></image></div>
+<div align="center"><a href="https://vercel.com/?utm_source=ErrHub&utm_campaign=oss"><image src="./images/vercel.svg" style="align-self: center;"></image></a>
