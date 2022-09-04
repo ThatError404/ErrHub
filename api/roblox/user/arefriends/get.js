@@ -1,14 +1,15 @@
 const fetch = require('node-fetch');
 
 export default (req, res) => {
-    const { id } = req.query;
+    const { id } = req.query.id;
+    const { fid } = req.query.fid;
     if (!id) {
         res.setHeader("Content-Type", 'application/json');
         res.send(JSON.stringify({
             error: "No ID was provided."
         }, null, 4))
     } else {
-        fetch(`https://friends.roblox.com/v1/users/${id}/friends/statuses?userIds=${id}`)
+        fetch(`https://friends.roblox.com/v1/users/${id}/friends/statuses?userIds=${fid}`)
             .then((r) => r.json())
             .then((r) => {
             res.status(200).json(r);
