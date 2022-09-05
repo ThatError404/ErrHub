@@ -4,8 +4,9 @@ const fs = require('fs');
 export default (req, res) => {
     let raw = req.query.pkg;
     let pkg = raw.toLowerCase();
-    if (fs.existsSync(`./public/${pkg}.json`)) {
-        res.status(200).json(JSON.parse(fs.readFileSync(`./public/${pkg}.json`)));
+    if (fs.existsSync("./current/" + pkg + ".json")) {
+        let data = fs.readFileSync("./current/" + pkg + ".json");
+        res.json(JSON.parse(data));
     } else {
         // Get files with a similar name
         res.status(404).json({
