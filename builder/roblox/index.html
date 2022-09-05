@@ -45,10 +45,52 @@
 <body>
     <nav>
         <ul class="navigation-bar">
-            <li><image src="https://errhub.dev/images/github.png" width="30" height="30" style="align-self: left;"></image>   <a href="https://github.com/ThatError404/ErrHub">Github</a></li>
+            <li><image src="https://errhub.dev/images/github.png" width="30" height="30" style="align-self: left;"></image>   <a id="gitlink" href="https://github.com/ThatError404/ErrHub">Github</a></li>
+            <!-- Add an icon with a moon and sun to switch between light and dark mode. -->
+            <li><image id="theme-mode" mode="dark" src="https://github.com/ThatError404/ErrHub/blob/main/images/moon.png?raw=true" width="30" height="30" style="align-self: left;"></image>  
 </svg></a></li>
         </ul>
       </nav>
+
+      <script>
+        document.getElementById("theme-mode").onclick = function() {
+            if (this.getAttribute("mode") == "dark") {
+                this.setAttribute("mode", "light");
+                // Change the image to the sun.
+                this.src = "https://github.com/ThatError404/ErrHub/blob/main/images/sun.png?raw=true"
+                // Change style ip1 background to white
+                document.getElementById("ip1").style.background = "#ffffff";
+                // Change style ip1 text to black
+                document.getElementById("ip1").style.color = "#2b2b2b";
+                // Change style uiloader background to white
+                document.getElementById("uiloader").style.background = "#ffffff";
+                // Change style uiloader text to black
+                document.getElementById("uiloader").style.color = "#2b2b2b";
+                // Change style body background to white
+                document.body.style.background = "#ffffff";
+                // Change style body text to black
+                document.body.style.color = "#2b2b2b";
+                // Change the navigation bar to white
+                document.getElementsByClassName("navigation-bar")[0].style.background = "#ffffff";
+            }
+
+            else if (this.getAttribute("mode") == "light") {
+                this.setAttribute("mode", "dark");
+                // Change the image to the moon.
+                this.src = "https://github.com/ThatError404/ErrHub/blob/main/images/moon.png?raw=true"
+                // Change style ip1 background to black
+                document.getElementById("ip1").style.background = "#2b2b2b";
+                // Change style ip1 text to white
+                document.getElementById("ip1").style.color = "#ffffff";
+                // Change style uiloader background to black
+                document.getElementById("uiloader").style.background = "#2b2b2b";
+                // Change style body background to black
+                document.body.style.background = "#000000";
+                // Change the navigation bar to black
+                document.getElementsByClassName("navigation-bar")[0].style.background = "#000000";
+            }
+        }
+    </script>
 
     <main>
         <br>
@@ -56,26 +98,86 @@
         <br>
         <br>
         <br>
-        <!-- Lock the text in the textbox to the top left but leave the textbox in the same place -->
-        <textarea id="ip1" placeholder="./default.lua" style="resize: none; overflow: hidden; text-align: left; font-family: monospace; font-size: 20px; color: white; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;"></textarea>
+        <textarea id="ip1" placeholder="./default.lua" spellcheck="false" style="resize: none; overflow: auto; text-align: left; font-family: monospace; font-size: 20px; color: white; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;"></textarea>
         <script>
-            // Get the content from "https://errhub.dev/builder/roblox/default.lua" then wait 1 second then load the content to placeholder text letter by letter
-            var request = new XMLHttpRequest();
-            request.open("GET", "https://errhub.dev/builder/roblox/default.lua", false);
-            request.send(null);
-            var content = request.responseText;
-            var i = 0;
-            var txt = "";
-            var speed = 1;
-            function typeWriter() {
-                if (i < content.length) {
-                    txt += content.charAt(i);
-                    document.getElementById("ip1").placeholder = txt;
+            var content = `local library = loadstring(game:HttpGet("https://errhub.dev/libraries/roblox/Kronos/kronos.lua"))()
+local window = library:Window({
+   Title = "KronosLib",
+   Accent = Color3.fromRGB(69,69,207),
+   Logo = 3610245066,
+   ToggleKey = Enum.KeyCode.LeftAlt
+})
+
+local tab = window:NewTab({
+   Logo = 4483345998
+})
+
+local tabsection = tab:TabSection({
+   Title = "TabSection"
+})
+
+local column = tabsection:AddColumn({
+   Title = "Column"
+})
+
+local section = column:Section({
+   Title = "Section"
+})
+
+section:Button({
+   Text = "Button",
+   Callback = function() end
+})
+
+section:Toggle({
+   Text = "Toggle",
+   State = false,
+   Callback = function() end
+})
+
+section:TextLabel({
+   Text = "Textlabel"
+})
+
+section:Divide({})
+
+section:Keybind({
+   Text = "Keybind",
+   Key = Enum.KeyCode.F,
+   Callback = function() end
+})
+
+section:Textbox({
+   Text = "Textbox",
+   Callback = function() end
+})
+
+section:Dropdown({
+   Text = "Dropdown",
+   List = {'option1', 'option2', 'option3'},
+   Callback = function() end
+})
+
+section:Slider({
+   Text = "Slider",
+   Min = 0,
+   Max = 100,
+   Def = 50,
+   Callback = function() end
+})`;
+            // Wait 1 second then load the content to placeholder text letter by letter
+            setTimeout(function() {
+                var i = 0;
+                var interval = setInterval(function() {
+                    document.getElementById("ip1").value += content[i];
                     i++;
-                    setTimeout(typeWriter, speed);
-                }
-            }
-            setTimeout(typeWriter, 1000);
+                    if (i >= content.length) {
+                        clearInterval(interval);
+                    }
+                }, 1);
+            }, 1000);
+        </script>
+        <script>
         </script>
         <!-- Add a rounded border to a div -->
         <div id="uiloader" style="resize: none; overflow: hidden; text-align: left; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;">
