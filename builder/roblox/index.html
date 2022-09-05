@@ -103,7 +103,7 @@
             var content = `local library = loadstring(game:HttpGet("https://errhub.dev/libraries/roblox/Kronos/kronos.lua"))()
 local window = library:Window({
    Title = "KronosLib",
-   Accent = Color3.fromRGB(69,69,207),
+   Accent = Color3.fromRGB(53, 50, 56)
    Logo = 3610245066,
    ToggleKey = Enum.KeyCode.LeftAlt
 })
@@ -175,18 +175,100 @@ section:Slider({
                         clearInterval(interval);
                     }
                 }, 1);
-            }, 1000);
+            }, 1500);
         </script>
-        <script>
-        </script>
-        <!-- Add a rounded border to a div -->
-        <div id="uiloader" style="resize: none; overflow: hidden; text-align: left; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;">
+        
+        <div id="uiloader" style="resize: none; overflow: hidden; text-align: left; border: 1px; background-color: #2b2b2b; outline: none;">
+
+            <div id="uileft" style="width: 12%; height: 100%; background-color: #353238; position: absolute; top: -1px; left: -1px;">
+
+                <img id="uilefticon" src="./globe.png" style="width: 45px; height: 45px; position: absolute; top: 5%; left: 47%; transform: translate(-50%, -50%);">
+
+            </div>
+
+            <div id="uimiddle" style="width: 20%; height: 100%; background-color: #2b2b2b; position: absolute; top: -1px; left: 11%;"></div>
+
+            <div id="uiright" style="width: 70%; height: 101%; background-color: #1c1c1c; position: absolute; top: -1px; left: 31%;"></div>
+
         </div>
         <br>
         <br>
         <br>
         <br>
         <br>
+
+        <!-- LUA TRANSLATOR -->
+
+        <script>
+            setInterval(function() {
+                // LIBRARY
+                if (!document.getElementById("ip1").value.includes("local library = loadstring(game:HttpGet(\"https://errhub.dev/libraries/roblox/Kronos/kronos.lua\"))()")) {
+
+                    document.getElementById("uiloader").style.display = "none";
+
+                } else if (document.getElementById("ip1").value.includes("local library = loadstring(game:HttpGet(\"https://errhub.dev/libraries/roblox/Kronos/kronos.lua\"))()")) {
+
+                    document.getElementById("uiloader").style.display = "block";
+
+                }
+
+                // WINDOW
+                if (!document.getElementById("ip1").value.includes("local window = library:Window({")) {
+
+                    document.getElementById("uileft").style.display = "none";
+                    document.getElementById("uimiddle").style.display = "none";
+                    document.getElementById("uiright").style.display = "none";
+
+                } else if (document.getElementById("ip1").value.includes("local window = library:Window({")) {
+
+                    document.getElementById("uileft").style.display = "block";
+                    document.getElementById("uimiddle").style.display = "block";
+                    document.getElementById("uiright").style.display = "block";
+
+                }
+
+                // WINDOW COLOR
+                if (!document.getElementById("ip1").value.includes("Accent = Color3.fromRGB(")) {
+
+                    document.getElementById("uileft").style.backgroundColor = "#353238";
+
+                } else if (document.getElementById("ip1").value.includes("Accent = Color3.fromRGB(")) {
+
+                    var color = document.getElementById("ip1").value.split("Accent = Color3.fromRGB(")[1].split(")")[0];
+                    document.getElementById("uileft").style.backgroundColor = "rgb(" + color + ")";
+
+                }
+
+                // WINDOW LOGO
+                if (!document.getElementById("ip1").value.includes("Logo = ")) {
+
+                    document.getElementById("uilefticon").style.display = "none";
+
+                } else if (document.getElementById("ip1").value.includes("Logo = ")) {
+                    // If the logo doesn't match the cashed logo at local storage
+                    if (document.getElementById("ip1").value.split("Logo = ")[1].split(",")[0] != localStorage.getItem("logo")) {
+                        // Set the logo to the new logo
+                        localStorage.setItem("logo", document.getElementById("ip1").value.split("Logo = ")[1].split(",")[0]);
+
+                        document.getElementById("uilefticon").style.display = "block";
+                        var logo = document.getElementById("ip1").value.split("Logo = ")[1].split(",")[0];
+                        var send_url = "https://thumbnails.roblox.com/v1/assets?assetIds=" + logo + "&size=30x30&format=Png&isCircular=false"
+                        var get_url = "https://errhub.dev/api/roblox/thumbnail?url=" + send_url;
+
+                        // Save the logo id to cache
+                        localStorage.setItem("logo", logo);
+
+                        // Decode the base64 image
+                        fetch(get_url)
+                            .then(response => response.json())
+                            .then(data => {
+                                document.getElementById("uilefticon").src = data.url;
+                            });
+                    }
+
+                }
+            }, 50);
+        </script>
 
     </main>
 </body>
