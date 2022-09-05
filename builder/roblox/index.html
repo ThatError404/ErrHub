@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="https://errhub.dev/images/error.jpg">
+  <link rel="stylesheet" type="text/css" href="https://errhub.dev/styles.css">
+
+  <!-- Embed -->
+  <meta name="og:title" content="ErrHub">
+  <meta name="theme-color" content="#f56642" />
+  <meta name="og:image" content="https://www.errhub.dev/images/error.jpg">
+  <meta name="og:description" content="Roblox (Exploit) Script Builder">
+  <title>ErrHub</title>
+
+  <style>
+    #ip1 {
+        border-radius: 18px;
+        background: #2b2b2b;
+        padding: 20px; 
+        width: 46%;
+        height: 85%;
+        /* put it on the right side of the screen */
+        position: absolute;
+        right: 0;
+        margin-right: 25px;
+    }
+
+    #uiloader {
+        /* Image is at .../images/default.png */
+        background-image: url("https://www.errhub.dev/images/default.png");
+    }
+</style>
+</head>
+
+<body>
+    <nav>
+        <ul class="navigation-bar">
+            <li><image src="https://errhub.dev/images/github.png" width="30" height="30" style="align-self: left;"></image>   <a href="https://github.com/ThatError404/ErrHub">Github</a></li>
+</svg></a></li>
+        </ul>
+      </nav>
+
+    <main>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <!-- Lock the text in the textbox to the top left but leave the textbox in the same place -->
+        <textarea id="ip1" placeholder="./default.lua" style="resize: none; overflow: hidden; text-align: left; font-family: monospace; font-size: 20px; color: white; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;"></textarea>
+        <script>
+            var request = new XMLHttpRequest();
+            request.open("GET", "https://errhub.dev/builder/roblox/default.lua", true);
+            request.send(null);
+            var content = request.responseText;
+            // Wait 1 second then load the content from "https://errhub.dev/builder/roblox/default.lua" but load it slowly letter by letter
+            setTimeout(function() {
+                var i = 0;
+                var interval = setInterval(function() {
+                    document.getElementById("ip1").value += content.charAt(i);
+                    i++;
+                    if (i >= content.length) {
+                        clearInterval(interval);
+                    }
+                }, 5);
+            }, 1000);
+        </script>
+        <!-- Add a rounded border to a div -->
+        <div id="uiloader" style="resize: none; overflow: hidden; text-align: left; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;">
+            <div id="uidefault">
+                
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </main>
+</body>
+
+</html>
