@@ -10,7 +10,7 @@ export default (req, res) => {
             .then(res => res.buffer())
             .then(buffer => {
                 const base64 = buffer.toString('base64');
-                res.status(200).json({ base64 });
+                res.status(200).send(base64);
             });
         }
     }
