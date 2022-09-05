@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="./images/error.jpg">
+  <link rel="stylesheet" type="text/css" href="./styles.css">
+
+  <!-- Embed -->
+  <meta name="og:title" content="ErrHub">
+  <meta name="theme-color" content="#f56642" />
+  <meta name="og:image" content="https://www.errhub.dev/images/error.jpg">
+  <meta name="og:description" content="Constantly updated APIs">
+  <title>ErrHub</title>
+
+  <style>
+    #about {
+      text-align: center;
+      margin-left: 18%;
+      margin-right: 18%;
+    }
+
+    #about img {
+      width: 30%;
+      border: 3.5px solid;
+      flex-wrap: wrap;
+      border-radius: 50%;
+    }
+
+    #about h2 {
+      background-image: linear-gradient(-45deg , #f56042, #f59342, #ffdf0f, #abff0f);
+    }
+  
+    .developers {
+      flex-wrap: wrap;
+      padding-bottom: 3.5em;
+    }
+
+    .developers > div {
+      padding: 1em 0 4.5em 0;
+      margin: 0.5em;
+      background-color: #292929;
+      border-radius: 0.5em;
+      width: 31%;
+    }
+
+    .developers > div:hover {
+      box-shadow: 5px 6px #1a1a1a;
+      transition: all 0.5s ease-in-out;
+    }
+
+     #api {
+       background-color: #121212; 
+       margin: 0 -5.4%;
+/*       background-size: cover;
+      background-image: url("images/banner2.jpg");
+      background-repeat: no-repeat;
+      text-align: center;
+      display: flex;
+      justify-content: space-around; */
+    }
+
+    .pro-con {
+      display: flex;
+      justify-content: space-around;
+      align-content: center;
+    }
+
+    pro-con > div {
+      width: 50%;
+      padding: 2.5em;
+      text-align: center;
+    }
+
+    #api h3 {
+      font-size: 180%;
+    }
+    
+    #api h2 {
+      background-image: linear-gradient(-45deg , #2ed9e6, #1d72e0, #2e52f2, #482ef2);
+    }
+    
+    #api img {
+      width: 50%;
+      padding: 3.5em 0;
+    }
+    
+    #faq {
+      padding: 1em -5%;
+    }
+
+    #faq h2 {
+      background-image: linear-gradient(-45deg , #1900ff, #670af2, #8f02db, #db02d8);
+    }
+
+    .questions-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: 3.5em;
+}
+
+    .question {
+      background-color: #292929;
+      border-radius: 0.5em;
+    }
+
+    .question:hover {
+      box-shadow: 5px 6px #1a1a1a;
+      transition: all 0.5s ease-in-out;
+    }
+  
+    .question button{
+      width: 100%;
+      background-color: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 15px;
+      outline: none;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      margin-top: 0.5em;
+    }
+
+    .question h3 {
+      font-size: 110%;
+      color: white;
+      text-align: left;
+    }
+  
+    .question p {
+      max-height: 0;
+      opacity: 0;
+      line-height: 1.5;
+      overflow: auto;
+      transition: all 0.6s ease;
+      overflow: hidden;
+    }
+    
+    /* Add this class when click */
+    .question p.show {
+        max-height: 200px; 
+        opacity: 1;
+        padding:0px 15px 30px 15px;
+    }
+
+    @media only screen and (min-width: 1336px) {
+      header {
+        background-attachment: fixed;
+      }
+    }
+    
+    @media only screen and (max-width: 850px) {      
+      #about {
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .developers > div {
+        width: 45%;
+      }
+    }
+  
+    @media only screen and (max-width: 454px) {
+        .card {
+            width: 100%;
+        }
+
+        .developers > div {
+          width: 100%;
+        }
+
+        .pro-con {
+          flex-direction: column;
+        }
+
+        .pro-con > div {
+          padding: 0;
+          padding-top: 2.5em;
+        }
+    }
+</style>
+</head>
+
+<body>
+    <nav>
+        <ul class="navigation-bar">
+          <li><a href="./index.html#about">About</a></li>
+            <li><a href="./api.html">Current APIs</a></li>
+            <li><a href="./index.html#faq">FAQ</a></li>
+            <li><image src="./images/github.png" width="30" height="30" style="align-self: left;"></image>   <a href="https://github.com/ThatError404/ErrHub">Github</a></li>
+            <li><a href="https://docs.errhub.dev">Docs</a></li>
+</svg></a></li>
+        </ul>
+      </nav>
+    <header>
+      <div>
+        <h1>ErrHub</h1>
+        <p>A website with "many" essential features</p>
+      </div>
+    </header>
+
+    <main>
+        <section id="about">
+          <h2>About ErrHub</h2>
+          <p style="font-size: 125%">I was just kind of bored</p>
+          <br>
+          <h2>Developers</h2>
+          <center>
+            <div class="developers">
+              <div>
+                <img src="images/error.jpg">
+                <h3>Error 404#0002</h3>
+                <p>Only Developer</p>
+              </div>
+            </div>
+          </center>
+        </section>
+      <section id="api">
+          <h2>Current APIs</h2>
+          <p style="text-align: center; font-weight: bold;"><a href="./api.html">Check out the full list of APIs here!</a></p>
+          <center><div class="pro-con">
+            <div>
+              <h3>Pros</h3>
+              <p>Literally None.</p>
+              
+            </div>
+            <div>
+              <h3>Cons</h3>
+              <p>Literally None</p>
+            </div>
+          </div>
+          </center>
+      </section>
+      <section id="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="title-text">
+  <div class="questions-container">
+        <div class="question">
+            <button><h3>What is an API?</h3></button>
+            <p>API is the acronym for Application Programming Interface, which is a software intermediary that allows two applications to talk to each other.</p>
+        </div>
+        <div class="question">
+            <button><h3>What's the reason behind the name "ErrHub"?</h3></button>
+            <p>My username is Error and this website has multiple freatures.</center></p>
+        </div>
+    </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <h3 style="color: #ffffff;">ErrHub</h2>
+        <p class="footer-credits" style="color: #ffffff;">Developed by Error 404#0002 (2022)</p>
+        <br>
+        <a href="https://vercel.com/?utm_source=ErrHub&utm_campaign=oss"><image src="./images/vercel.svg" style="align-self: center;"></image></a>
+      </div>
+    </footer>
+    <script type="text/javascript" defer>
+        // FAQ
+        var navLinks = document.getElementById("navLinks")
+
+        function showMenu(){
+          navLinks.style.right = "0";
+        
+        }
+        function hideMenu(){
+          navLinks.style.right = "-200px";
+        
+        }
+        
+        const buttons = document.querySelectorAll('button');
+        
+        buttons.forEach( button =>{
+            button.addEventListener('click',()=>{
+                const faq = button.nextElementSibling;
+        
+                faq.classList.toggle('show');
+            })
+        } )
+    </script>
+</body>
+
+</html>
