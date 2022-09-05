@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const fs = require('fs');
 
 export default (req, res) => {
-    const { name } = req.query.pkg;
+    const { name } = req.query;
     if (fs.existsSync(`./public/${name}.json.err`)) {
         res.status(200).json(JSON.parse(fs.readFileSync(`./public/${name}.json.err`)));
     } else {
