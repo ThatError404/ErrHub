@@ -10,6 +10,7 @@ export default (req, res) => {
         // Get files with a similar name
         res.status(404).json({
             error: 'Not found',
+            pkg_sent: pkg
         });
     }
 }
