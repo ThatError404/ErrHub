@@ -29,8 +29,15 @@
     }
 
     #uiloader {
-        /* Image is at .../images/default.png */
-        background-image: url("https://www.errhub.dev/images/default.png");
+        border-radius: 18px;
+        background: #2b2b2b;
+        padding: 20px;
+        width: 46%;
+        height: 85%;
+        /* put it on the right side of the screen */
+        position: absolute;
+        left: 0;
+        margin-left: 25px;
     }
 </style>
 </head>
@@ -52,27 +59,26 @@
         <!-- Lock the text in the textbox to the top left but leave the textbox in the same place -->
         <textarea id="ip1" placeholder="./default.lua" style="resize: none; overflow: hidden; text-align: left; font-family: monospace; font-size: 20px; color: white; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;"></textarea>
         <script>
+            // Get the content from "https://errhub.dev/builder/roblox/default.lua" then wait 1 second then load the content to placeholder text letter by letter
             var request = new XMLHttpRequest();
-            request.open("GET", "https://errhub.dev/builder/roblox/default.lua", true);
+            request.open("GET", "https://errhub.dev/builder/roblox/default.lua", false);
             request.send(null);
             var content = request.responseText;
-            // Wait 1 second then load the content from "https://errhub.dev/builder/roblox/default.lua" but load it slowly letter by letter
-            setTimeout(function() {
-                var i = 0;
-                var interval = setInterval(function() {
-                    document.getElementById("ip1").value += content.charAt(i);
+            var i = 0;
+            var txt = "";
+            var speed = 1;
+            function typeWriter() {
+                if (i < content.length) {
+                    txt += content.charAt(i);
+                    document.getElementById("ip1").placeholder = txt;
                     i++;
-                    if (i >= content.length) {
-                        clearInterval(interval);
-                    }
-                }, 5);
-            }, 1000);
+                    setTimeout(typeWriter, speed);
+                }
+            }
+            setTimeout(typeWriter, 1000);
         </script>
         <!-- Add a rounded border to a div -->
         <div id="uiloader" style="resize: none; overflow: hidden; text-align: left; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;">
-            <div id="uidefault">
-                
-            </div>
         </div>
         <br>
         <br>

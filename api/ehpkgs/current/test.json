@@ -1,2 +1,16 @@
 {
+    "crtd": {
+        "{eh_modules}/Test/"
+    },
+    "crtf": {
+        "{eh_modules}/Test/index.js"
+    },
+    "edt": {
+        "{eh_modules}/Test/index.js > console.log('ErrHub Test Module!');"
+    },
+    "author": "ErrHub",
+    "version": "1.0.0",
+    "description": "ErrHub Test Module",
+    "dependencies": {
+    }
 }

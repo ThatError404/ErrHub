@@ -1,6 +1,6 @@
 cd /usr/local/bin
 touch eh
-curl -s https://raw.githubusercontent.com/ThatError404/ErrHub/master/Installer/MacOS/1.0.0/eh > eh
+curl -s https://raw.githubusercontent.com/ThatError404/ErrHub/main/EH/Installer/MacOS/1.0.0/eh > eh
 chmod +x eh
-echo "ErrHub v1.0.0 has been installed!"
-echo "Run 'eh help' to see all commands!"
+echo "\n\n\nErrHub v1.0.0 has been installed!"
+echo "\n\n\nRun 'eh help' to see all commands!"
