@@ -12,10 +12,99 @@
   <meta name="og:title" content="ErrHub">
   <meta name="theme-color" content="#f56642" />
   <meta name="og:image" content="https://www.errhub.dev/images/error.jpg">
-  <meta name="og:description" content="Roblox (Exploit) Script Builder">
+  <meta name="og:description" content="Roblox (Exploit) Script Builder and Visualizer">
   <title>ErrHub</title>
 
   <style>
+
+    #luatheme {
+      /* set every syntax and its color */
+      --luatheme-identifier: #f56642;
+      --luatheme-number: #f56642;
+      --luatheme-string: #f56642;
+      --luatheme-comment: #f56642;
+      --luatheme-keyword: #f56642;
+      --luatheme-operator: #f56642;
+      --luatheme-function: #f56642;
+      --luatheme-variable: #f56642;
+      --luatheme-constant: #f56642;
+      --luatheme-error: #f56642;
+      --luatheme-warning: #f56642;
+      --luatheme-preprocessor: #f56642;
+      --luatheme-boolean: #f56642;
+      --luatheme-type: #f56642;
+      --luatheme-escape: #f56642;
+      --luatheme-exception: #f56642;
+      --luatheme-label: #f56642;
+      --luatheme-include: #f56642;
+      --luatheme-predefined: #f56642;
+      --luatheme-predefined-constant: #f56642;
+      --luatheme-predefined-type: #f56642;
+      --luatheme-predefined-variable: #f56642;
+      --luatheme-tag: #f56642;
+      --luatheme-tag-attribute: #f56642;
+      --luatheme-tag-special: #f56642;
+      --luatheme-tag-unknown: #f56642;
+      --luatheme-xml-attribute: #f56642;
+      --luatheme-xml-cdata: #f56642;
+      --luatheme-xml-comment: #f56642;
+      --luatheme-xml-delimiter: #f56642;
+      --luatheme-xml-entity: #f56642;
+      --luatheme-xml-tag: #f56642;
+      --luatheme-xml-text: #f56642;
+      --luatheme-xml-unknown: #f56642;
+      --luatheme-xml-value: #f56642;
+    }
+
+    #button {
+        border-radius: 18px;
+        border-width: 1px;
+        border-color: #000000;
+        background: #2b2b2b;
+        width: 85px;
+        height: 45px;
+        position: absolute;
+        top: 8%;
+        right: 48%;
+    }
+
+    #button2 {
+        border-radius: 18px;
+        border-width: 1px;
+        border-color: #000000;
+        background: #2b2b2b;
+        width: 85px;
+        height: 45px;
+        position: absolute;
+        top: 12%;
+        right: 48%;
+    }
+
+    #button3 {
+        border-radius: 18px;
+        border-width: 1px;
+        border-color: #000000;
+        background: #2b2b2b;
+        width: 85px;
+        height: 45px;
+        position: absolute;
+        top: 16%;
+        right: 48%;
+    }
+
+    #testui {
+        border-radius: 18px;
+        border-width: 1px;
+        border-color: #000000;
+        background: #2b2b2b;
+        width: 85px;
+        height: 45px;
+        position: absolute;
+        bottom: 7%;
+        right: 48%;
+    }
+
+
     #ip1 {
         border-radius: 18px;
         background: #2b2b2b;
@@ -39,6 +128,7 @@
         left: 0;
         margin-left: 25px;
     }
+
 </style>
 </head>
 
@@ -72,6 +162,18 @@
                 document.body.style.color = "#2b2b2b";
                 // Change the navigation bar to white
                 document.getElementsByClassName("navigation-bar")[0].style.background = "#ffffff";
+                // Change button background to white
+                document.getElementById("button").style.background = "#ffffff";
+                // Change button text to black
+                document.getElementById("button").style.color = "#2b2b2b";
+                // Change button2 background to white
+                document.getElementById("button2").style.background = "#ffffff";
+                // Change button2 text to black
+                document.getElementById("button2").style.color = "#2b2b2b";
+                // Change button3 background to white
+                document.getElementById("button3").style.background = "#ffffff";
+                // Change button3 text to black
+                document.getElementById("button3").style.color = "#2b2b2b";
             }
 
             else if (this.getAttribute("mode") == "light") {
@@ -88,6 +190,18 @@
                 document.body.style.background = "#000000";
                 // Change the navigation bar to black
                 document.getElementsByClassName("navigation-bar")[0].style.background = "#000000";
+                // Change button background to black
+                document.getElementById("button").style.background = "#2b2b2b";
+                // Change button text to white
+                document.getElementById("button").style.color = "#ffffff";
+                // Change button2 background to black
+                document.getElementById("button2").style.background = "#2b2b2b";
+                // Change button2 text to white
+                document.getElementById("button2").style.color = "#ffffff";
+                // Change button3 background to black
+                document.getElementById("button3").style.background = "#2b2b2b";
+                // Change button3 text to white
+                document.getElementById("button3").style.color = "#ffffff";
             }
         }
     </script>
@@ -98,7 +212,39 @@
         <br>
         <br>
         <br>
-        <textarea id="ip1" placeholder="./default.lua" spellcheck="false" style="resize: none; overflow: auto; text-align: left; font-family: monospace; font-size: 20px; color: white; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;"></textarea>
+        <button id="button">Font +</button>
+        <br>
+        <button id="button2">Font -</button>
+        <button id="button3">Reset</button>
+
+        <!-- TEST UI -->
+        <button id="testui">Test Script</button>
+        <script>
+            document.getElementById("testui").onclick = function() {
+                var newElement = document.createElement("p");
+                newElement.innerHTML = "Loadstring copied to clipboard. Paste it into your injector. This link will last for 5 minutes.";
+                newElement.style.position = "absolute";
+                newElement.style.top = "50%";
+                newElement.style.left = "50%";
+                newElement.style.transform = "translate(-50%, -50%)";
+                newElement.style.fontSize = "75px";
+                document.body.appendChild(newElement);
+                setTimeout(function() {
+                    newElement.remove();
+                }, 3000);
+                // Create a new file at ./loadstring/ and a name thats not taken.
+                var fs = require('fs');
+                var name = Math.random().toString(36).substring(7);
+                fs.writeFile("./loadstring/" + name + ".txt", "loadstring", function(err) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    console.log("The file was saved!");
+                });
+            }
+        </script>
+
+        <textarea id="ip1" placeholder="./default.lua" spellcheck="false" style="resize: none; overflow: auto; text-align: left; font-family: monospace; font-size: 15px; color: white; border: 1px solid #2b2b2b; background-color: #2b2b2b; outline: none;"></textarea>
         <script>
             var content = `local library = loadstring(game:HttpGet("https://errhub.dev/libraries/roblox/Kronos/kronos.lua"))()
 local window = library:Window({
@@ -191,11 +337,33 @@ section:Slider({
             <div id="uiright" style="width: 70%; height: 101%; background-color: #1c1c1c; position: absolute; top: -1px; left: 31%;"></div>
 
         </div>
+
         <br>
         <br>
         <br>
         <br>
         <br>
+
+        <!-- FONT RESIZE -->
+        <script>
+            document.getElementById("button").onclick = function() {
+                var size = document.getElementById("ip1").style.fontSize;
+                var size = parseFloat(size);
+                size += 1;
+                document.getElementById("ip1").style.fontSize = size + "px";
+            }
+            document.getElementById("button2").onclick = function() {
+                var size = document.getElementById("ip1").style.fontSize;
+                var size = parseFloat(size);
+                size -= 1;
+                document.getElementById("ip1").style.fontSize = size + "px";
+            }
+            document.getElementById("button3").onclick = function() {
+                var size = document.getElementById("ip1").style.fontSize;
+                var size = parseFloat(size);
+                document.getElementById("ip1").style.fontSize = "15px";
+            }
+        </script>
 
         <!-- LUA TRANSLATOR -->
 
@@ -239,34 +407,6 @@ section:Slider({
 
                 }
 
-                // WINDOW LOGO
-                if (!document.getElementById("ip1").value.includes("Logo = ")) {
-
-                    document.getElementById("uilefticon").style.display = "none";
-
-                } else if (document.getElementById("ip1").value.includes("Logo = ")) {
-                    // If the logo doesn't match the cashed logo at local storage
-                    if (document.getElementById("ip1").value.split("Logo = ")[1].split(",")[0] != localStorage.getItem("logo")) {
-                        // Set the logo to the new logo
-                        localStorage.setItem("logo", document.getElementById("ip1").value.split("Logo = ")[1].split(",")[0]);
-
-                        document.getElementById("uilefticon").style.display = "block";
-                        var logo = document.getElementById("ip1").value.split("Logo = ")[1].split(",")[0];
-                        var send_url = "https://thumbnails.roblox.com/v1/assets?assetIds=" + logo + "&size=30x30&format=Png&isCircular=false"
-                        var get_url = "https://errhub.dev/api/roblox/thumbnail?url=" + send_url;
-
-                        // Save the logo id to cache
-                        localStorage.setItem("logo", logo);
-
-                        // Decode the base64 image
-                        fetch(get_url)
-                            .then(response => response.json())
-                            .then(data => {
-                                document.getElementById("uilefticon").src = data.url;
-                            });
-                    }
-
-                }
             }, 50);
         </script>
 
