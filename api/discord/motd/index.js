@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 export default (req, res) => {
-    const { motd } = fs.readFileSync('/motd.txt', 'utf8');
+    const { motd } = fs.readFileSync('./motd.txt', 'utf8');
     // Get a random line from the file
     const randomMotd = motd[Math.floor(Math.random() * motd.length)];
     const motdLine = motd.indexOf(randomMotd) + 1;
