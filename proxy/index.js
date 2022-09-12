@@ -12,6 +12,8 @@ export default (req, res) => {
                 const httpsValue = httpValue.replace('http', 'https://errhub.dev/proxy?url=http');
                 response.text().replace(httpValue, httpsValue);
             }
-            res.send(response.text());
+            res.send({
+                body: response.text()
+            });
         }
     }
