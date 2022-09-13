@@ -7,6 +7,12 @@ export default (req, res) => {
         const folders = plugins.filter((plugin) => {
             return fs.statSync(`../plugins/${plugin}`).isDirectory();
         });
-        res.status(200).json({ amount: folders.length });
+        res.send(JSON.stringify({
+            amount: folders.length
+        }, null, 4));
+    } else {
+        res.send(JSON.stringify({
+            error: 'Invalid type'
+        }, null, 4));
     }
 }
