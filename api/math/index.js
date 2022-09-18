@@ -1,5 +1,5 @@
 export default function (req, res) {
-    const { data } = res.query
+    const { data } = req.body;
     if (data.idle === true) {
         let work = true
         res.status(200).json({
