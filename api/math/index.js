@@ -1,0 +1,12 @@
+export default function (req, res) {
+    const { data } = res.query
+    if (data.idle === true) {
+        let work = true
+        res.status(200).json({
+            work,
+            math: {
+                return: 1 + 1
+            }
+        })
+    }
+}
