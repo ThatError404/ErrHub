@@ -1,4 +1,4 @@
-export default function (req, res) {
+export default (req, res) => {
     const data = req.body;
     if (data.idle == "true" || data.idle == true) {
         let work = true
