@@ -3,7 +3,7 @@ export default (req, res) => {
     res.status(200).json({
         work,
         math: {
-            return: 1 + 1
+            return: '69 * 420'
         }
     })
 }
